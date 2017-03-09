@@ -69,15 +69,27 @@ function getSmartnessCriterion(threshold) {
 
 let smarterThanThree = getSmartnessCriterion(3);
 console.log("Smart students: " + getByCriterion(school, smarterThanThree));
-console.log("--------------------------------")
+console.log("--------------------------------");
 let enthusiastic = getEnthusiasmCriterion(2);
 console.log("Smart students: " + getByCriterion(school, enthusiastic));
-console.log("--------------------------------")
+console.log("--------------------------------");
 
 function and(testOne, testTwo) {
     return function(s) {
         return testOne(s) && testTwo(s);
-    }
+    };
+}
+
+function or(testOne, testTwo) {
+    return function(s) {
+        return testOne(s) || testTwo(s);
+    };
+}
+
+function not(testOne) {
+    return function(s) {
+        return !testOne(s);
+    };
 }
 console.log("Smart and enthusiastic students: " + getByCriterion(school, and(enthusiastic, smarterThanThree)));
 
