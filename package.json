@@ -1,0 +1,16 @@
+{
+  "name": "IntermediateJSMar2017",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "simon",
+  "contributors": [],
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
