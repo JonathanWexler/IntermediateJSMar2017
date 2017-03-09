@@ -22,6 +22,8 @@ let school = [];
 school.push(new Student("Fred", 3.2, "Math", "Physics", "Chemistry"));
 school.push(new Student("Jim", 2.9, "Art History", "Philosophy"));
 school.push(new Student("Sheila", 3.9, "Engineering", "Electronics", "Astronomy", "Astrophysics"));
+school.push(new Student("Teresa", 3.6, "Electronics", "Astronomy"));
+school.push(new Student("Tony", 2.9, "Astronomy", "Astrophysics", "Engineering"));
 
 console.log("School: " + school);
 
@@ -53,13 +55,32 @@ function studentNameFirstHalf(s) {
     return s.name.substring(0, 1) < "M"; 
 }
 
+function getEnthusiasmCriterion(threshold) {
+    return function(s) {
+        return s.courses.length > threshold;
+    };
+}
+
 function getSmartnessCriterion(threshold) {
     return function(s) {
         return s.gpa > threshold;
     };
 }
 
-console.log("Smart students: " + getByCriterion(school, getSmartnessCriterion(2)));
+let smarterThanThree = getSmartnessCriterion(3);
+console.log("Smart students: " + getByCriterion(school, smarterThanThree));
+console.log("--------------------------------")
+let enthusiastic = getEnthusiasmCriterion(2);
+console.log("Smart students: " + getByCriterion(school, enthusiastic));
+console.log("--------------------------------")
+
+function and(testOne, testTwo) {
+    return function(s) {
+        return testOne(s) && testTwo(s);
+    }
+}
+console.log("Smart and enthusiastic students: " + getByCriterion(school, and(enthusiastic, smarterThanThree)));
+
 
 //console.log("Smart students: " + getByCriterion(school, studentIsSmart));
 //console.log("Enthusiastic students: " + getByCriterion(school, studentIsEnthusiastic));
