@@ -52,4 +52,8 @@ MakeOne();
 
 let m = new MakeOne();
 
+// instanceof tries to fake the "is an instance of this class" behavior
+// found in Java. It actually says "was this initialized by this function"
+// Probably suggestive of poor design to see this often (either that or
+// might be software-entropy after too many changes!)
 console.log("MakeOne instanceof MakeOne? " + (m instanceof MakeOne));
