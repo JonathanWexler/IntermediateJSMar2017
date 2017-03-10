@@ -12,12 +12,13 @@ function Student(name, gpa, ...courses) {
 Student.prototype = {
     name: "Unspecified",
     gpa: 0.0,
-    toString: () => "Student { name = " + this.name + ", gpa = " + this.gpa +
-                " courses = " + this.courses + " }",
-//    toString: function () {
-//        return "Student { name = " + this.name + ", gpa = " + this.gpa +
-//                " courses = " + this.courses + " }";
-//    },
+    // DO NOT USE LAMBDAS for member functions!
+//    toString: () => "Student { name = " + this.name + ", gpa = " + this.gpa +
+//                " courses = " + this.courses + " }",
+    toString: function () {
+        return "Student { name = " + this.name + ", gpa = " + this.gpa +
+                " courses = " + this.courses + " }";
+    },
     getSmartnessCriterion: function () {
         let self = this;
         return function (s) {
