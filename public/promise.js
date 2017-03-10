@@ -18,6 +18,7 @@
             }, 2000);
         });
     }
+    
     let button = document.getElementById("myButton");
     // get a promise from the button
     promiseFromButton(button)
