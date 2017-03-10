@@ -1,22 +1,28 @@
+// Here we are creating a function defined in the global scope
 "use strict;"
-function f1() {
-  // This is global scope
+function globallyDefined() {
+  // 'This' in this funciton is in global scope
   console.log(this);
 }
 
-// f1();
-// This doesn't implicitly mean the objct that was invoked. Sometimes it is the global scope
+// globallyDefined();
+// When calling the above line we get the window or process, global parent
+// This doesn't implicitly mean the object that was invoked. Sometimes it is the global scope
+
 // Functions get "This" from outside the function, but it doesn't necesarily have to come from the object instance calling it, like s.call()
-let t1 = {
+
+// Defining some other object
+let newObject = {
 
 };
 
-t1.prototype = {
+// Adding to this object's prototype
+newObject.prototype = {
   name: "name of function",
   toString: function () {
     return `my name is ${this.name}`;
   },
-  jon: function () {
+  ok: function () {
     return "Ok";
   },
   sayHello: function () {
@@ -24,20 +30,23 @@ t1.prototype = {
   }
 }
 
+// If we try to define a new field/behavior of the newObject that references a globally defined function, then the context of the function being referenced is newObject
+newObject.memberDefined = globallyDefined;
 
-// t1.f2 = f1;
+// Now invoked as a member function "this" takes the scope of newObject
+// "This" comes from the invocation, not from where it's declared
+// newObject.globallyDefined();
+// ^called above and newObjectwill be logged to the screen
 
-// Now invoked as a member fucntion "this" takes the scope of t1
-// This comes from the invocation, not from where it's declared
-// t1.f2();
+newObject.ok();
 
-t1.jon();
 
-// t1.sayHello();
-// let t2 = {
+// Sandbox
+// newObject.sayHello();
+// let newObject2 = {
 //   name: "Albert"
 // };
 //
-// t2.shout = t1.sayHello;
+// newObject2.shout = t1.sayHello;
 //
 // t2.shout();
