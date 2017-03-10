@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Button Click</title>
+  </head>
+  <body>
+    <div id="alert">
+
+    </div>
+    <input type="button" id="myButton" name="" value="Click Here">
+    <script type="text/javascript">
+    console.log("%cERROR: Virus! %cPlease Shut Down Machine.", "color: red; font-size:55px; font-weight: bold;", "color: orange; font-size:20px;");
+      let alertBox = document.getElementById("alert");
+      let thebutton = document.getElementById("myButton");
+      thebutton.addEventListener("click", function () {
+        // alert("clicked!");
+      });
+      // thebutton.onclick = function () {
+      //   alert("Also here");
+      // }
+      // thebutton.onclick(function() {
+      //   alert("ok");
+      // })
+    </script>
+
+    <style media="screen">
+      input{
+        width: 100%;
+        height: 40px;
+        background-color: lightgreen;
+        color: white;
+        border: none;
+      }
+      input:hover{
+        background-color: green;
+      }
+      input:active{
+        background-color: black;
+      }
+      #alert{
+        width: 300px;
+        height: 100px;
+        /*background-color: blue;*/
+        border: solid 1px gray;
+        border-radius: 20px;
+        box-shadow: 20px 10px;
+      }
+    </style>
+  </body>
+</html>
