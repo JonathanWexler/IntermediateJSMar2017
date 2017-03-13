@@ -1,0 +1,58 @@
+<!-- Now we want to add promises to be connected to onscreen events -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <input id="button" type="button" name="" value="Click the Promise">
+
+
+
+    <script type="text/javascript">
+      // IIFE Immediately involed function expression
+      (function () {
+        function promiseFromButton(button) {
+          return new Promise(function (resolve) {
+            // This is dependency injection
+            // We define a function that we give to the promise, asking it in 'resolve' when the promise is done to notify us with this function by adding an event listener
+            button.addEventListener('click', function(){
+              resolve("The button was clicked");
+            })
+          });
+        }
+
+        function waitAWhile(data) {
+            // setTimeout(function () {
+            //   console.log("Waiting");
+            //   console.log(data);
+            //   return data;
+            // }, 1000);
+            // ^ this will jsut send data downstream and not wait to alter
+            // Basically it assumes this function doesn't return anything
+
+            // return new Promise(function (resolve) {
+            //   setTimeout(function () {
+            //     console.log("Waiting");
+            //     console.log(data);
+            //     resolve(data);
+            //   }, 1000);
+            // })
+            // ^ This is the way to do it!
+        }
+
+        let button = document.getElementById('button');
+        promiseFromButton(button)
+          // then we wait a while
+          .then(waitAWhile)
+            .then(x => {
+              console.log('x');
+              console.log(x);
+            });
+      }());
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+<input id="button" type="button" name="" value="Click Here for new Div">
+
+    <script type="text/javascript">
+      (function () {
+        // return Promise.resolve(function() {
+        //   console.log("HEre");
+        //   setTimeout(function () {
+        //     console.log("Waiting");
+        //     console.log(data);
+        //     return(data);
+        //   }, 1000);
+
+        // function test() {
+        //   return new Promise(function(resolve) {
+        //     setTimeout(()=>{
+        //       resolve(34);
+        //     }, 2000)
+        //   })
+        // }
+
+        let b = document.getElementById('button');
+        setListener(b);
+        function setListener(elem) {
+          elem.addEventListener('click', () =>{
+            console.log('clicked')
+
+        var node = document.createElement("LI");                 // Create a <li> node
+        var textnode = document.createTextNode("Water");         // Create a text node
+// node.appendChild(textnode);
+            elem.appendChild(document.createElement("LI").appendChild(document.createTextNode("New Node")));
+          })
+        }
+
+        // function test(resolve) {
+        //   setTimeout(()=>{
+        //     resolve(34);
+        //   }, 2000)
+        // }
+
+        // let p = Promise.resolve(new Promise(test(resolve)))
+        // .then(data => {
+        //   console.log(data);
+        // })
+      }());
+    </script>
+  </body>
+</html>
